@@ -72,6 +72,27 @@ export function Importer<Row extends BaseRow>(
   const locale = userLocale ?? enUS;
 
   if (!fileAccepted || fileState === null || externalPreview === null) {
+    if (theme) {
+      return (
+        <ThemeProvider theme={theme}>
+          <LocaleContext.Provider value={locale}>
+            <div className="CSVImporter_Importer">
+              <FileStep
+                customConfig={customPapaParseConfig}
+                defaultNoHeader={defaultNoHeader ?? assumeNoHeaders}
+                prevState={fileState}
+                onChange={(parsedPreview) => {
+                  setFileState(parsedPreview);
+                }}
+                onAccept={() => {
+                  setFileAccepted(true);
+                }}
+              />
+            </div>
+          </LocaleContext.Provider>
+        </ThemeProvider>
+      );
+    }
     return (
       <LocaleContext.Provider value={locale}>
         <div className="CSVImporter_Importer">
@@ -92,6 +113,43 @@ export function Importer<Row extends BaseRow>(
   }
 
   if (!fieldsAccepted || fieldsState === null) {
+    if (theme) {
+      return (
+        <ThemeProvider theme={theme}>
+          <LocaleContext.Provider value={locale}>
+            <div className="CSVImporter_Importer">
+              <FieldsStep
+                fileState={fileState}
+                fields={fields}
+                prevState={fieldsState}
+                displayFieldRowSize={displayFieldRowSize}
+                displayColumnPageSize={displayColumnPageSize}
+                onChange={(state) => {
+                  setFieldsState(state);
+                }}
+                onAccept={() => {
+                  setFieldsAccepted(true);
+                }}
+                onCancel={() => {
+                  // keep existing preview data and assignments
+                  setFileAccepted(false);
+                }}
+              />
+
+              {userFieldContentWrapper(
+                // render the provided child content that defines the fields
+                typeof content === "function"
+                  ? content({
+                      file: fileState && fileState.file,
+                      preview: externalPreview,
+                    })
+                  : content
+              )}
+            </div>
+          </LocaleContext.Provider>
+        </ThemeProvider>
+      );
+    }
     return (
       <LocaleContext.Provider value={locale}>
         <div className="CSVImporter_Importer">
@@ -126,7 +184,7 @@ export function Importer<Row extends BaseRow>(
       </LocaleContext.Provider>
     );
   }
-  if (theme !== undefined) {
+  if (theme) {
     return (
       <ThemeProvider theme={theme}>
         <LocaleContext.Provider value={locale}>
