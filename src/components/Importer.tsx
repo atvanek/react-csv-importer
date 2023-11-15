@@ -1,19 +1,19 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect } from "react";
 
-import { BaseRow } from '../parser';
-import { FileStep, FileStepState } from './file-step/FileStep';
-import { generatePreviewColumns } from './fields-step/ColumnPreview';
-import { FieldsStep, FieldsStepState } from './fields-step/FieldsStep';
-import { ProgressDisplay } from './ProgressDisplay';
-import { ImporterFilePreview, ImporterProps } from './ImporterProps';
+import { BaseRow } from "../parser";
+import { FileStep, FileStepState } from "./file-step/FileStep";
+import { generatePreviewColumns } from "./fields-step/ColumnPreview";
+import { FieldsStep, FieldsStepState } from "./fields-step/FieldsStep";
+import { ProgressDisplay } from "./ProgressDisplay";
+import { ImporterFilePreview, ImporterProps } from "./ImporterProps";
+import { ThemeProvider } from "@emotion/react";
 
 // re-export from a central spot
-export { ImporterField } from './ImporterField';
-import { useFieldDefinitions } from './ImporterField';
-
-import './Importer.scss';
-import { LocaleContext } from '../locale/LocaleContext';
-import { enUS } from '../locale';
+export { ImporterField } from "./ImporterField";
+import { useFieldDefinitions } from "./ImporterField";
+import "./Importer.scss";
+import { LocaleContext } from "../locale/LocaleContext";
+import { enUS } from "../locale";
 
 export function Importer<Row extends BaseRow>(
   props: ImporterProps<Row>
@@ -31,6 +31,7 @@ export function Importer<Row extends BaseRow>(
     onClose,
     children: content,
     locale: userLocale,
+    theme,
     ...customPapaParseConfig
   } = props;
 
@@ -62,7 +63,7 @@ export function Importer<Row extends BaseRow>(
         rawData: fileState.firstChunk,
         columns: externalColumns,
         skipHeaders: !fileState.hasHeaders,
-        parseWarning: fileState.parseWarning
+        parseWarning: fileState.parseWarning,
       }
     );
   }, [fileState]);
@@ -72,21 +73,23 @@ export function Importer<Row extends BaseRow>(
 
   if (!fileAccepted || fileState === null || externalPreview === null) {
     return (
-      <LocaleContext.Provider value={locale}>
-        <div className="CSVImporter_Importer">
-          <FileStep
-            customConfig={customPapaParseConfig}
-            defaultNoHeader={defaultNoHeader ?? assumeNoHeaders}
-            prevState={fileState}
-            onChange={(parsedPreview) => {
-              setFileState(parsedPreview);
-            }}
-            onAccept={() => {
-              setFileAccepted(true);
-            }}
-          />
-        </div>
-      </LocaleContext.Provider>
+      <ThemeProvider theme={theme}>
+        <LocaleContext.Provider value={locale}>
+          <div className="CSVImporter_Importer">
+            <FileStep
+              customConfig={customPapaParseConfig}
+              defaultNoHeader={defaultNoHeader ?? assumeNoHeaders}
+              prevState={fileState}
+              onChange={(parsedPreview) => {
+                setFileState(parsedPreview);
+              }}
+              onAccept={() => {
+                setFileAccepted(true);
+              }}
+            />
+          </div>
+        </LocaleContext.Provider>
+      </ThemeProvider>
     );
   }
 
@@ -114,10 +117,10 @@ export function Importer<Row extends BaseRow>(
 
           {userFieldContentWrapper(
             // render the provided child content that defines the fields
-            typeof content === 'function'
+            typeof content === "function"
               ? content({
                   file: fileState && fileState.file,
-                  preview: externalPreview
+                  preview: externalPreview,
                 })
               : content
           )}
@@ -125,7 +128,37 @@ export function Importer<Row extends BaseRow>(
       </LocaleContext.Provider>
     );
   }
-
+  if (theme) {
+    return (
+      <ThemeProvider theme={theme}>
+        <LocaleContext.Provider value={locale}>
+          <div className="CSVImporter_Importer">
+            <ProgressDisplay
+              fileState={fileState}
+              fieldsState={fieldsState}
+              externalPreview={externalPreview}
+              // @todo remove assertion after upgrading to TS 4.1+
+              dataHandler={dataHandler ?? processChunk!} // eslint-disable-line @typescript-eslint/no-non-null-assertion
+              onStart={onStart}
+              onRestart={
+                restartable
+                  ? () => {
+                      // reset all state
+                      setFileState(null);
+                      setFileAccepted(false);
+                      setFieldsState(null);
+                      setFieldsAccepted(false);
+                    }
+                  : undefined
+              }
+              onComplete={onComplete}
+              onClose={onClose}
+            />
+          </div>
+        </LocaleContext.Provider>
+      </ThemeProvider>
+    );
+  }
   return (
     <LocaleContext.Provider value={locale}>
       <div className="CSVImporter_Importer">
