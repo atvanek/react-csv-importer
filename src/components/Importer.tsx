@@ -128,7 +128,7 @@ export function Importer<Row extends BaseRow>(
       </LocaleContext.Provider>
     );
   }
-  if (theme) {
+  if (theme !== undefined) {
     return (
       <ThemeProvider theme={theme}>
         <LocaleContext.Provider value={locale}>
