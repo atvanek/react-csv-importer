@@ -77,8 +77,8 @@
     "mini-css-extract-plugin": "^0.11.1",
     "mocha": "^8.2.1",
     "prettier": "^2.1.1",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-is": "^16.13.1",
     "rimraf": "^3.0.2",
     "sass": "^1.26.10",
@@ -101,8 +101,9 @@
     "react-dom": "^16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.4",
-    "@material-ui/icons": "^4.11.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.18",
     "@use-gesture/react": "^10.2.11",
     "papaparse": "^5.3.0",
     "react-dropzone": "^12.1.0"

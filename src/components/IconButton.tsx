@@ -16,6 +16,8 @@ export const IconButton: React.FC<{
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
+      data-small={!!small}
+      data-focus-only={!!focusOnly}
     >
       <span data-type={type} />
     </button>
