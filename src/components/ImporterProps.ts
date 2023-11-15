@@ -49,23 +49,22 @@ export type ImporterDataHandlerProps<Row extends BaseRow> =
       dataHandler?: undefined; // disambiguate from newer naming
     };
 
-export type ImporterProps<Row extends BaseRow> = ImporterDataHandlerProps<
-  Row
-> & {
-  defaultNoHeader?: boolean;
-  /**
-   * @deprecated renamed to `defaultNoHeader`
-   */
-  assumeNoHeaders?: boolean;
+export type ImporterProps<Row extends BaseRow> =
+  ImporterDataHandlerProps<Row> & {
+    defaultNoHeader?: boolean;
+    /**
+     * @deprecated renamed to `defaultNoHeader`
+     */
+    assumeNoHeaders?: boolean;
 
-  displayColumnPageSize?: number;
-  displayFieldRowSize?: number;
+    displayColumnPageSize?: number;
+    displayFieldRowSize?: number;
 
-  restartable?: boolean;
-  onStart?: (info: ImportInfo) => void;
-  onComplete?: (info: ImportInfo) => void;
-  onClose?: (info: ImportInfo) => void;
-  children?: ImporterContentRenderProp | React.ReactNode;
-  locale?: ImporterLocale;
-  theme?: Theme;
-} & CustomizablePapaParseConfig;
+    restartable?: boolean;
+    onStart?: (info: ImportInfo) => void;
+    onComplete?: (info: ImportInfo) => void;
+    onClose?: (info: ImportInfo) => void;
+    children?: ImporterContentRenderProp | React.ReactNode;
+    locale?: ImporterLocale;
+    theme?: Theme;
+  } & CustomizablePapaParseConfig;

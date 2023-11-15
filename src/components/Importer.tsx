@@ -73,23 +73,21 @@ export function Importer<Row extends BaseRow>(
 
   if (!fileAccepted || fileState === null || externalPreview === null) {
     return (
-      <ThemeProvider theme={theme}>
-        <LocaleContext.Provider value={locale}>
-          <div className="CSVImporter_Importer">
-            <FileStep
-              customConfig={customPapaParseConfig}
-              defaultNoHeader={defaultNoHeader ?? assumeNoHeaders}
-              prevState={fileState}
-              onChange={(parsedPreview) => {
-                setFileState(parsedPreview);
-              }}
-              onAccept={() => {
-                setFileAccepted(true);
-              }}
-            />
-          </div>
-        </LocaleContext.Provider>
-      </ThemeProvider>
+      <LocaleContext.Provider value={locale}>
+        <div className="CSVImporter_Importer">
+          <FileStep
+            customConfig={customPapaParseConfig}
+            defaultNoHeader={defaultNoHeader ?? assumeNoHeaders}
+            prevState={fileState}
+            onChange={(parsedPreview) => {
+              setFileState(parsedPreview);
+            }}
+            onAccept={() => {
+              setFileAccepted(true);
+            }}
+          />
+        </div>
+      </LocaleContext.Provider>
     );
   }
 
