@@ -1,19 +1,20 @@
-import React, { useMemo, useRef, useEffect, useState } from 'react';
+import React, { useMemo, useRef, useEffect, useState } from "react";
 
 import {
   parsePreview,
   PreviewResults,
   PreviewReport,
-  CustomizablePapaParseConfig
-} from '../../parser';
-import { ImporterFrame } from '../ImporterFrame';
-import { FileSelector } from './FileSelector';
-import { FormatRawPreview } from './FormatRawPreview';
-import { FormatDataRowPreview } from './FormatDataRowPreview';
-import { FormatErrorMessage } from './FormatErrorMessage';
+  CustomizablePapaParseConfig,
+} from "../../parser";
+import { ImporterFrame } from "../ImporterFrame";
+import { FileSelector } from "./FileSelector";
+import { FormatRawPreview } from "./FormatRawPreview";
+import { FormatDataRowPreview } from "./FormatDataRowPreview";
+import { FormatErrorMessage } from "./FormatErrorMessage";
+import { Checkbox } from "@mui/material";
 
-import './FileStep.scss';
-import { useLocale } from '../../locale/LocaleContext';
+import "./FileStep.scss";
+import { useLocale } from "../../locale/LocaleContext";
 
 export interface FileStepState extends PreviewReport {
   papaParseConfig: CustomizablePapaParseConfig; // config that was used for preview parsing
@@ -27,7 +28,7 @@ export const FileStep: React.FC<{
   onChange: (state: FileStepState | null) => void;
   onAccept: () => void;
 }> = ({ customConfig, defaultNoHeader, prevState, onChange, onAccept }) => {
-  const l10n = useLocale('fileStep');
+  const l10n = useLocale("fileStep");
 
   // seed from previous state as needed
   const [selectedFile, setSelectedFile] = useState<File | null>(
@@ -38,7 +39,7 @@ export const FileStep: React.FC<{
     () =>
       prevState && {
         parseError: undefined,
-        ...prevState
+        ...prevState,
       }
   );
 
@@ -148,8 +149,7 @@ export const FileStep: React.FC<{
               {l10n.previewImportHeading}
               {!preview.isSingleLine && ( // hide setting if only one line anyway
                 <label className="CSVImporter_FileStep__headerToggle">
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={hasHeaders}
                     onChange={() => {
                       setHasHeaders((prev) => !prev);
@@ -179,7 +179,7 @@ export const FileStep: React.FC<{
       nextDisabled={!preview || !!preview.parseError || !!preview.parseWarning}
       onNext={() => {
         if (!preview || preview.parseError) {
-          throw new Error('unexpected missing preview info');
+          throw new Error("unexpected missing preview info");
         }
 
         onAccept();
