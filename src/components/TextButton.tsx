@@ -13,6 +13,7 @@ export const TextButton: React.FC<{
       type="button" // avoid triggering form submit
       disabled={disabled}
       onClick={onClick}
+      color="primary"
     >
       {children}
     </Button>

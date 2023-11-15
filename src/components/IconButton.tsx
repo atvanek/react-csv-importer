@@ -1,7 +1,5 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import './IconButton.scss';
-import { ArrowBack } from '@material-ui/icons';
 
 export const IconButton: React.FC<{
   label: string;
@@ -12,14 +10,14 @@ export const IconButton: React.FC<{
   onClick?: () => void;
 }> = ({ type, label, small, focusOnly, disabled, onClick }) => {
   return (
-    <Button
+    <button
       className="CSVImporter_IconButton"
       type="button" // avoid triggering form submit
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
     >
-      <ArrowBack />
-    </Button>
+      <span data-type={type} />
+    </button>
   );
 };
