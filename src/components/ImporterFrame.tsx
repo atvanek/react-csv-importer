@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 
-import { TextButton } from './TextButton';
-import { IconButton } from './IconButton';
+import { TextButton } from "./TextButton";
+import { IconButton } from "./IconButton";
 
-import './ImporterFrame.scss';
-import { useLocale } from '../locale/LocaleContext';
+import "./ImporterFrame.scss";
+import { useLocale } from "../locale/LocaleContext";
 
 export const ImporterFrame: React.FC<{
   fileName: string;
@@ -28,7 +28,7 @@ export const ImporterFrame: React.FC<{
   onSecondary,
   onNext,
   onCancel,
-  children
+  children,
 }) => {
   const titleRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
@@ -41,7 +41,7 @@ export const ImporterFrame: React.FC<{
     }
   }, []);
 
-  const l10n = useLocale('general');
+  const l10n = useLocale("general");
 
   return (
     <div className="CSVImporter_ImporterFrame">
@@ -90,7 +90,11 @@ export const ImporterFrame: React.FC<{
 
         {secondaryLabel ? (
           <div className="CSVImporter_ImporterFrame__footerSecondary">
-            <TextButton disabled={!!secondaryDisabled} onClick={onSecondary}>
+            <TextButton
+              disabled={!!secondaryDisabled}
+              onClick={onSecondary}
+              primary={false}
+            >
               {secondaryLabel}
             </TextButton>
           </div>
@@ -98,7 +102,11 @@ export const ImporterFrame: React.FC<{
 
         {nextLabel !== false ? (
           <div className="CSVImporter_ImporterFrame__footerNext">
-            <TextButton disabled={!!nextDisabled} onClick={onNext}>
+            <TextButton
+              disabled={!!nextDisabled}
+              onClick={onNext}
+              primary={true}
+            >
               {nextLabel}
             </TextButton>
           </div>

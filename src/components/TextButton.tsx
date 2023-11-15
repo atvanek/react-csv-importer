@@ -5,7 +5,8 @@ import "./TextButton.scss";
 export const TextButton: React.FC<{
   disabled?: boolean;
   onClick?: () => void;
-}> = ({ disabled, onClick, children }) => {
+  primary?: boolean;
+}> = ({ disabled, onClick, primary, children }) => {
   return (
     <Button
       className="CSVImporter_TextButton"
@@ -13,6 +14,8 @@ export const TextButton: React.FC<{
       type="button" // avoid triggering form submit
       disabled={disabled}
       onClick={onClick}
+      color={primary ? "primary" : "secondary"}
+      sx={{ mx: 3 }}
     >
       {children}
     </Button>
