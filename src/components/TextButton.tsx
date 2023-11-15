@@ -15,7 +15,7 @@ export const TextButton: React.FC<{
       disabled={disabled}
       onClick={onClick}
       color={primary ? "primary" : "secondary"}
-      sx={{ mx: 3 }}
+      sx={{ mx: 1 }}
     >
       {children}
     </Button>
