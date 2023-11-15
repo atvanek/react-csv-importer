@@ -232,7 +232,8 @@ export function parsePreview(
     // @todo wait for upstream multibyte fix in PapaParse: https://github.com/mholt/PapaParse/issues/908
     const nodeStream = nodeStreamWrapper(
       streamForBlob(file),
-      customConfig.encoding || 'utf-8'
+      // customConfig.encoding ||
+      'utf-8'
     );
 
     Papa.parse(nodeStream, {
@@ -307,12 +308,15 @@ export function processFile<Row extends BaseRow>(
     // @todo wait for upstream multibyte fix in PapaParse: https://github.com/mholt/PapaParse/issues/908
     const nodeStream = nodeStreamWrapper(
       streamForBlob(file),
-      papaParseConfig.encoding || 'utf-8'
+      // papaParseConfig.encoding ||
+      'utf-8'
     );
 
     Papa.parse(nodeStream, {
       ...papaParseConfig,
-      chunkSize: papaParseConfig.chunkSize || 10000, // our own preferred default
+      chunkSize:
+        // papaParseConfig.chunkSize || 
+      10000, // our own preferred default
 
       error: (error) => {
         reject(error);
