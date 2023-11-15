@@ -9,6 +9,7 @@ export const TextButton: React.FC<{
   return (
     <Button
       className="CSVImporter_TextButton"
+      variant='contained'
       type="button" // avoid triggering form submit
       disabled={disabled}
       onClick={onClick}

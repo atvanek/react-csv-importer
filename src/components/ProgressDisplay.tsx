@@ -8,6 +8,7 @@ import { ImporterFrame } from './ImporterFrame';
 
 import './ProgressDisplay.scss';
 import { useLocale } from '../locale/LocaleContext';
+import { LinearProgress } from '@material-ui/core';
 
 // compute actual UTF-8 bytes used by a string
 // (inspired by https://stackoverflow.com/questions/10576905/how-to-convert-javascript-unicode-notation-code-to-utf-8)
@@ -229,12 +230,7 @@ export function ProgressDisplay<Row extends BaseRow>({
           <var>{l10n.processedRowsLabel}</var> {progressCount}
         </div>
 
-        <div className="CSVImporter_ProgressDisplay__progressBar">
-          <div
-            className="CSVImporter_ProgressDisplay__progressBarIndicator"
-            style={{ width: `${progressPercentage}%` }}
-          />
-        </div>
+        <LinearProgress value={progressPercentage} variant="determinate" />
       </div>
     </ImporterFrame>
   );

@@ -102,6 +102,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "@use-gesture/react": "^10.2.11",
     "papaparse": "^5.3.0",
     "react-dropzone": "^12.1.0"
