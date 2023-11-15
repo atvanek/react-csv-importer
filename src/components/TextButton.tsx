@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button } from '@mui/material';
-import './TextButton.scss';
+import React from "react";
+import { Button } from "@mui/material";
+import "./TextButton.scss";
 
 export const TextButton: React.FC<{
   disabled?: boolean;
@@ -13,7 +13,6 @@ export const TextButton: React.FC<{
       type="button" // avoid triggering form submit
       disabled={disabled}
       onClick={onClick}
-      color="primary"
     >
       {children}
     </Button>
