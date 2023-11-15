@@ -2562,7 +2562,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/papaparse@^5.2.2":
+"@types/papaparse@^5.3.11":
   version "5.3.11"
   resolved "https://registry.npmjs.org/@types/papaparse/-/papaparse-5.3.11.tgz"
   integrity sha512-ISil0lMkpRDrBTKRPnUgVb5IqxWwj19gWBrX/ROk3pbkkslBN3URa713r/BSfAUj+w9gTPg3S3f45aMToVfh1w==
@@ -5195,9 +5195,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.535:
-  version "1.4.583"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.583.tgz"
-  integrity sha512-93y1gcONABZ7uqYe/JWDVQP/Pj/sQSunF0HVAPdlg/pfBnOyBMLlQUxWvkqcljJg1+W6cjvPuYD+r1Th9Tn8mA==
+  version "1.4.584"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.584.tgz"
+  integrity sha512-rXCtDiXCBtfTfEegkthruCvyWZnr1/FCrUGY/nYQiF+lSZDmwQBDxp0rivZxV8trXb6cbgojhcSTW5xsDcHQ8g==
 
 elliptic@^6.5.3, elliptic@^6.5.4:
   version "6.5.4"
