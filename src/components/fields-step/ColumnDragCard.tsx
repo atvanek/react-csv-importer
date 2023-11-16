@@ -5,6 +5,7 @@ import { Column } from "./ColumnPreview";
 
 import "./ColumnDragCard.scss";
 import { useLocale } from "../../locale/LocaleContext";
+import { Paper } from "@mui/material";
 
 // @todo sort out "grabbing" cursor state (does not work with pointer-events:none)
 export const ColumnDragCard: React.FC<{
@@ -51,7 +52,7 @@ export const ColumnDragCard: React.FC<{
 
   return (
     // not changing variant dynamically because it causes a height jump
-    <div
+    <Paper
       key={isDummy || isShadow ? 1 : isDropIndicator ? 2 : 0} // force re-creation to avoid transition anim
       className="CSVImporter_ColumnDragCard"
       data-dummy={!!isDummy}
@@ -87,6 +88,6 @@ export const ColumnDragCard: React.FC<{
           </div>
         ))}
       </div>
-    </div>
+    </Paper>
   );
 };
