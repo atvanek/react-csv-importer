@@ -5,7 +5,7 @@
   border: 1px solid $controlBorderColor;
   padding: 1.2em;
   border-radius: $borderRadius;
-  background: $controlBgColor;
+  // background: $controlBgColor;
 
   &__header {
     display: flex;
@@ -48,7 +48,7 @@
     flex: none;
     padding-bottom: 0.1em; // centering nudge
     font-size: $titleFontSize;
-    color: $textColor;
+    // color: $textColor;
   }
 
   &__footer {
@@ -65,7 +65,7 @@
   &__footerError {
     flex: none;
     line-height: 0.8; // in case of line break
-    color: $errorTextColor;
+    // color: $errorTextColor;
     word-break: break-word;
   }
 

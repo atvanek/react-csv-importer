@@ -12,6 +12,7 @@ import { FormatRawPreview } from "./FormatRawPreview";
 import { FormatDataRowPreview } from "./FormatDataRowPreview";
 import { FormatErrorMessage } from "./FormatErrorMessage";
 import { Checkbox } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 
 import "./FileStep.scss";
 import { useLocale } from "../../locale/LocaleContext";
@@ -121,13 +122,13 @@ export const FileStep: React.FC<{
 
     if (preview.parseError) {
       return (
-        <div className="CSVImporter_FileStep__mainResultBlock">
+        <Paper className="CSVImporter_FileStep__mainResultBlock">
           <FormatErrorMessage onCancelClick={() => setSelectedFile(null)}>
             {l10n.getImportError(
               preview.parseError.message || String(preview.parseError)
             )}
           </FormatErrorMessage>
-        </div>
+        </Paper>
       );
     }
 
@@ -155,7 +156,7 @@ export const FileStep: React.FC<{
                       setHasHeaders((prev) => !prev);
                     }}
                   />
-                  <span>{l10n.dataHasHeadersCheckbox}</span>
+                  <Typography>{l10n.dataHasHeadersCheckbox}</Typography>
                 </label>
               )}
             </div>

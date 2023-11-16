@@ -5,6 +5,7 @@ import { IconButton } from "./IconButton";
 
 import "./ImporterFrame.scss";
 import { useLocale } from "../locale/LocaleContext";
+import { Paper, Typography } from "@mui/material";
 
 export const ImporterFrame: React.FC<{
   fileName: string;
@@ -44,7 +45,7 @@ export const ImporterFrame: React.FC<{
   const l10n = useLocale("general");
 
   return (
-    <div className="CSVImporter_ImporterFrame">
+    <Paper className="CSVImporter_ImporterFrame">
       <div className="CSVImporter_ImporterFrame__header">
         <IconButton
           label={l10n.goToPreviousStepTooltip}
@@ -58,7 +59,7 @@ export const ImporterFrame: React.FC<{
           tabIndex={-1}
           ref={titleRef}
         >
-          {fileName}
+          <Typography>{fileName}</Typography>
         </div>
 
         {subtitle ? (
@@ -71,7 +72,7 @@ export const ImporterFrame: React.FC<{
               tabIndex={-1}
               ref={subtitleRef}
             >
-              {subtitle}
+              <Typography> {subtitle}</Typography>
             </div>
           </>
         ) : null}
@@ -84,7 +85,7 @@ export const ImporterFrame: React.FC<{
 
         {error ? (
           <div className="CSVImporter_ImporterFrame__footerError" role="status">
-            {error}
+            <Typography>{error}</Typography>
           </div>
         ) : null}
 
@@ -112,6 +113,6 @@ export const ImporterFrame: React.FC<{
           </div>
         ) : null}
       </div>
-    </div>
+    </Paper>
   );
 };

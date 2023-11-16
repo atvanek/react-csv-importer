@@ -1,11 +1,11 @@
-import React, { useCallback, useRef } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { useLocale } from '../../locale/LocaleContext';
-
-import './FileSelector.scss';
+import React, { useCallback, useRef } from "react";
+import { useDropzone } from "react-dropzone";
+import { useLocale } from "../../locale/LocaleContext";
+import { Paper, Typography } from "@mui/material";
+import "./FileSelector.scss";
 
 export const FileSelector: React.FC<{ onSelected: (file: File) => void }> = ({
-  onSelected
+  onSelected,
 }) => {
   const onSelectedRef = useRef(onSelected);
   onSelectedRef.current = onSelected;
@@ -21,24 +21,21 @@ export const FileSelector: React.FC<{ onSelected: (file: File) => void }> = ({
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop: dropHandler
+    onDrop: dropHandler,
   });
 
-  const l10n = useLocale('fileStep');
+  const l10n = useLocale("fileStep");
 
   return (
-    <div
+    <Paper
       className="CSVImporter_FileSelector"
       data-active={!!isDragActive}
       {...getRootProps()}
     >
       <input {...getInputProps()} />
-
-      {isDragActive ? (
-        <span>{l10n.activeDragDropPrompt}</span>
-      ) : (
-        <span>{l10n.initialDragDropPrompt}</span>
-      )}
-    </div>
+      <Typography>
+        {isDragActive ? l10n.activeDragDropPrompt : l10n.initialDragDropPrompt}
+      </Typography>
+    </Paper>
   );
 };
