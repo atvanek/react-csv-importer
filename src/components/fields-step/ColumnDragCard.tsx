@@ -64,10 +64,11 @@ export const ColumnDragCard: React.FC<{
       data-draggable={!!isDraggable}
       data-dragged={!!isDragged}
       data-drop-indicator={!!isDropIndicator}
+      elevation={3}
       sx={{
-        '&[data-shadow="true"]': {
-          background: theme.palette.background.paper,
-        },
+        color: isShadow
+          ? theme.palette.text.disabled
+          : theme.palette.text.primary,
       }}
     >
       <div
