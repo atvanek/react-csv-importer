@@ -1,6 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom";
 import { Importer, ImporterField } from "react-csv-importer";
+import { createTheme } from "@mui/material";
 
 // theme CSS for React CSV Importer
 import "react-csv-importer/dist/index.css";
@@ -10,7 +11,13 @@ import "./index.css";
 
 // sample importer usage snippet, play around with the settings and try it out!
 // (open console output to see sample results)
-ReactDOM.render(
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
+createRoot(
   <div>
     <h1>React CSV Importer sandbox</h1>
 
@@ -24,6 +31,7 @@ ReactDOM.render(
         // mock timeout to simulate processing
         await new Promise((resolve) => setTimeout(resolve, 500));
       }}
+      theme={theme}
       chunkSize={10000} // optional, internal parsing chunk size in bytes
       defaultNoHeader={false} // optional, keeps "data has headers" checkbox off by default
       restartable={false} // optional, lets user choose to upload another file when import is complete
@@ -47,5 +55,6 @@ ReactDOM.render(
       <ImporterField name="postalCode" label="Postal Code" optional />
     </Importer>
   </div>,
+
   document.getElementById("root")
 );

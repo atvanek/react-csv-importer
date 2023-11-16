@@ -1,10 +1,10 @@
-import React, { useRef, useLayoutEffect } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useRef, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 
-import { ColumnDragCard } from './ColumnDragCard';
-import { DragState } from './ColumnDragState';
+import { ColumnDragCard } from "./ColumnDragCard";
+import { DragState } from "./ColumnDragState";
 
-import './ColumnDragObject.scss';
+import "./ColumnDragObject.scss";
 
 export const ColumnDragObject: React.FC<{
   dragState: DragState | null;

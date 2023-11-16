@@ -1,6 +1,6 @@
-import React, { useMemo, useState, useEffect, useContext } from 'react';
+import React, { useMemo, useState, useEffect, useContext } from "react";
 
-import { ImporterFieldProps } from './ImporterProps';
+import { ImporterFieldProps } from "./ImporterProps";
 
 export interface Field {
   name: string;
@@ -36,16 +36,16 @@ export function useFieldDefinitions(): [
 export const ImporterField: React.FC<ImporterFieldProps> = ({
   name,
   label,
-  optional
+  optional,
 }) => {
   // make unique internal ID (this is never rendered in HTML and does not affect SSR)
-  const instanceId = useMemo(() => Symbol('internal unique field ID'), []);
+  const instanceId = useMemo(() => Symbol("internal unique field ID"), []);
   const fieldSetter = useContext(FieldDefinitionContext);
 
   // update central list as needed
   useEffect(() => {
     if (!fieldSetter) {
-      console.error('importer field must be a child of importer'); // @todo
+      console.error("importer field must be a child of importer"); // @todo
       return;
     }
 
@@ -61,7 +61,7 @@ export const ImporterField: React.FC<ImporterFieldProps> = ({
         instanceId,
         name,
         label,
-        isOptional: !!optional
+        isOptional: !!optional,
       };
       if (existingIndex === -1) {
         copy.push(newField);
@@ -76,7 +76,7 @@ export const ImporterField: React.FC<ImporterFieldProps> = ({
   // on component unmount, remove this field from list by ID
   useEffect(() => {
     if (!fieldSetter) {
-      console.error('importer field must be a child of importer'); // @todo
+      console.error("importer field must be a child of importer"); // @todo
       return;
     }
 

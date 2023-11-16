@@ -5,7 +5,7 @@
   z-index: 0; // reset stacking context
   padding: 0.5em 0.75em;
   border-radius: $borderRadius;
-  background: $controlBgColor;
+  // background: $controlBgColor;
   box-shadow: 0 1px 1px rgba(#000, 0.25);
   cursor: default;
 
@@ -18,26 +18,26 @@
 
   &[data-dummy='true'] {
     border-radius: 0;
-    background: $fillColor;
+    // background: $fillColor;
     box-shadow: none;
     opacity: 0.5;
     user-select: none;
   }
 
   &[data-error='true'] {
-    background: rgba($errorTextColor, 0.25);
-    color: $textColor;
+    // background: rgba($errorTextColor, 0.25);
+    // color: $textColor;
   }
 
   &[data-shadow='true'] {
-    background: $fillColor;
+    // background: $fillColor;
     box-shadow: none;
-    color: rgba($textColor, 0.25); // reduce text
+    // color: rgba($textColor, 0.25); // reduce text
   }
 
   &[data-drop-indicator='true'] {
     box-shadow: 0 1px 2px rgba(#000, 0.5);
-    color: $fgColor;
+    // color: $fgColor;
   }
 
   &__cardHeader {
@@ -47,7 +47,7 @@
     margin-left: -0.5em;
     height: 1.5em; // sized to be covered by small button
     font-weight: bold;
-    color: $textSecondaryColor;
+    // color: $textSecondaryColor;
 
     & > b {
       display: flex;
@@ -69,7 +69,7 @@
 
   &__cardPaper[data-draggable='true']:hover &__cardHeader,
   &__cardPaper[data-dragged='true'] &__cardHeader {
-    color: $fgColor;
+    // color: $fgColor;
   }
 
   &__cardValue {
@@ -83,7 +83,7 @@
     &[data-header='true'] {
       text-align: center;
       font-style: italic;
-      color: $textSecondaryColor;
+      // color: $textSecondaryColor;
     }
 
     & + div {
@@ -92,6 +92,6 @@
   }
 
   &[data-shadow='true'] > &__cardValue[data-header='true'] {
-    color: rgba($textSecondaryColor, 0.25); // reduce text
+    // color: rgba($textSecondaryColor, 0.25); // reduce text
   }
 }

@@ -17,12 +17,12 @@
   &__boxLabel {
     margin-bottom: 0.25em;
     font-weight: bold;
-    color: $textColor;
+    // color: $textColor;
     word-break: break-word;
 
     & > b {
       margin-left: 0.25em;
-      color: $errorTextColor;
+      // color: $errorTextColor;
     }
   }
 
@@ -50,6 +50,6 @@
     height: 98%; // nudge up a bit
     padding: 0.5em;
     text-align: center; // in case text wraps
-    color: $textSecondaryColor; // @todo font-size
+    // color: $textSecondaryColor; // @todo font-size
   }
 }

@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from "react";
 
-import { PREVIEW_ROW_COUNT } from '../../parser';
-import { Column } from './ColumnPreview';
+import { PREVIEW_ROW_COUNT } from "../../parser";
+import { Column } from "./ColumnPreview";
 
-import './ColumnDragCard.scss';
-import { useLocale } from '../../locale/LocaleContext';
+import "./ColumnDragCard.scss";
+import { useLocale } from "../../locale/LocaleContext";
 
 // @todo sort out "grabbing" cursor state (does not work with pointer-events:none)
 export const ColumnDragCard: React.FC<{
@@ -26,7 +26,7 @@ export const ColumnDragCard: React.FC<{
   isShadow,
   isDraggable,
   isDragged,
-  isDropIndicator
+  isDropIndicator,
 }) => {
   const isDummy = !optionalColumn;
 
@@ -34,9 +34,9 @@ export const ColumnDragCard: React.FC<{
     () =>
       optionalColumn || {
         index: -1,
-        code: '',
-        header: hasHeaders ? '' : undefined,
-        values: [...new Array(PREVIEW_ROW_COUNT)].map(() => '')
+        code: "",
+        header: hasHeaders ? "" : undefined,
+        values: [...new Array(PREVIEW_ROW_COUNT)].map(() => ""),
       },
     [optionalColumn, hasHeaders]
   );
@@ -47,7 +47,7 @@ export const ColumnDragCard: React.FC<{
     headerValue === undefined ? rowCount : rowCount - 1
   );
 
-  const l10n = useLocale('fieldsStep');
+  const l10n = useLocale("fieldsStep");
 
   return (
     // not changing variant dynamically because it causes a height jump
@@ -67,12 +67,12 @@ export const ColumnDragCard: React.FC<{
         ) : (
           <var role="text">{l10n.getColumnCardHeader(column.code)}</var>
         )}
-        {isDummy || isAssigned ? '\u00a0' : <b aria-hidden>{column.code}</b>}
+        {isDummy || isAssigned ? "\u00a0" : <b aria-hidden>{column.code}</b>}
       </div>
 
       {headerValue !== undefined ? (
         <div className="CSVImporter_ColumnDragCard__cardValue" data-header>
-          {headerValue || '\u00a0'}
+          {headerValue || "\u00a0"}
         </div>
       ) : null}
 
@@ -83,7 +83,7 @@ export const ColumnDragCard: React.FC<{
             key={valueIndex}
             className="CSVImporter_ColumnDragCard__cardValue"
           >
-            {value || '\u00a0'}
+            {value || "\u00a0"}
           </div>
         ))}
       </div>
