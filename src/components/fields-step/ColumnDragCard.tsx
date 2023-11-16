@@ -5,7 +5,8 @@ import { Column } from "./ColumnPreview";
 
 import "./ColumnDragCard.scss";
 import { useLocale } from "../../locale/LocaleContext";
-import { Paper } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 // @todo sort out "grabbing" cursor state (does not work with pointer-events:none)
 export const ColumnDragCard: React.FC<{
@@ -31,6 +32,8 @@ export const ColumnDragCard: React.FC<{
 }) => {
   const isDummy = !optionalColumn;
 
+  const theme = useTheme();
+
   const column = useMemo<Column>(
     () =>
       optionalColumn || {
@@ -42,7 +45,7 @@ export const ColumnDragCard: React.FC<{
     [optionalColumn, hasHeaders]
   );
 
-  const headerValue = column.header;
+  const headerValue = <Typography>{column.header}</Typography>;
   const dataValues = column.values.slice(
     0,
     headerValue === undefined ? rowCount : rowCount - 1
@@ -62,7 +65,11 @@ export const ColumnDragCard: React.FC<{
       data-dragged={!!isDragged}
       data-drop-indicator={!!isDropIndicator}
     >
-      <div className="CSVImporter_ColumnDragCard__cardHeader">
+      <div
+        className="CSVImporter_ColumnDragCard__cardHeader"
+        style={{ backgroundColor: theme.palette.primary.main }}
+      >
+        {/* <Typography> */}
         {isDummy ? (
           <var role="text">{l10n.columnCardDummyHeader}</var>
         ) : (

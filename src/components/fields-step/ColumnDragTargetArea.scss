@@ -1,9 +1,10 @@
-@import '../../theme.scss';
+@import "../../theme.scss";
 
 .CSVImporter_ColumnDragTargetArea {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+
 
   &__box {
     flex-basis: 25%;
@@ -12,6 +13,7 @@
     width: 0; // avoid interference from internal width
     padding-top: 1em; // not using margin for cleaner percentage calculation
     padding-right: 1em;
+    
   }
 
   &__boxLabel {
@@ -50,6 +52,7 @@
     height: 98%; // nudge up a bit
     padding: 0.5em;
     text-align: center; // in case text wraps
+    // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
     // color: $textSecondaryColor; // @todo font-size
   }
 }

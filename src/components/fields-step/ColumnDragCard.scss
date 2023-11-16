@@ -1,4 +1,4 @@
-@import '../../theme.scss';
+@import "../../theme.scss";
 
 .CSVImporter_ColumnDragCard {
   position: relative;
@@ -9,14 +9,14 @@
   box-shadow: 0 1px 1px rgba(#000, 0.25);
   cursor: default;
 
-  &[data-draggable='true'] {
+  &[data-draggable="true"] {
     cursor: grab;
 
     // avoid triggering scroll on iOS Safari (needed despite preventDefault also being used)
     touch-action: none;
   }
 
-  &[data-dummy='true'] {
+  &[data-dummy="true"] {
     border-radius: 0;
     // background: $fillColor;
     box-shadow: none;
@@ -24,18 +24,18 @@
     user-select: none;
   }
 
-  &[data-error='true'] {
-    // background: rgba($errorTextColor, 0.25);
-    // color: $textColor;
-  }
+  // &[data-error='true'] {
+  //   // background: rgba($errorTextColor, 0.25);
+  //   // color: $textColor;
+  // }
 
-  &[data-shadow='true'] {
+  &[data-shadow="true"] {
     // background: $fillColor;
     box-shadow: none;
     // color: rgba($textColor, 0.25); // reduce text
   }
 
-  &[data-drop-indicator='true'] {
+  &[data-drop-indicator="true"] {
     box-shadow: 0 1px 2px rgba(#000, 0.5);
     // color: $fgColor;
   }
@@ -54,7 +54,7 @@
       align-items: center;
       justify-content: center;
       height: 100%;
-      background: $fillColor;
+      // background: $fillColor;
       line-height: 1; // centered by parent anyway
     }
 
@@ -67,8 +67,8 @@
     }
   }
 
-  &__cardPaper[data-draggable='true']:hover &__cardHeader,
-  &__cardPaper[data-dragged='true'] &__cardHeader {
+  &__cardPaper[data-draggable="true"]:hover &__cardHeader,
+  &__cardPaper[data-dragged="true"] &__cardHeader {
     // color: $fgColor;
   }
 
@@ -80,7 +80,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    &[data-header='true'] {
+    &[data-header="true"] {
       text-align: center;
       font-style: italic;
       // color: $textSecondaryColor;
@@ -91,7 +91,7 @@
     }
   }
 
-  &[data-shadow='true'] > &__cardValue[data-header='true'] {
+  &[data-shadow="true"] > &__cardValue[data-header="true"] {
     // color: rgba($textSecondaryColor, 0.25); // reduce text
   }
 }
