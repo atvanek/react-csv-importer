@@ -64,6 +64,7 @@ export const ColumnDragCard: React.FC<{
       data-draggable={!!isDraggable}
       data-dragged={!!isDragged}
       data-drop-indicator={!!isDropIndicator}
+      sx={{ backgroundColor: theme.palette.action.selected }}
     >
       <div
         className="CSVImporter_ColumnDragCard__cardHeader"

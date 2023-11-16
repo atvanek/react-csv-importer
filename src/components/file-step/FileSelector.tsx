@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { useLocale } from "../../locale/LocaleContext";
 import { Paper, Typography } from "@mui/material";
 import "./FileSelector.scss";
+import { useTheme } from "@mui/material";
 
 export const FileSelector: React.FC<{ onSelected: (file: File) => void }> = ({
   onSelected,
@@ -24,12 +25,15 @@ export const FileSelector: React.FC<{ onSelected: (file: File) => void }> = ({
     onDrop: dropHandler,
   });
 
+  const theme = useTheme();
+
   const l10n = useLocale("fileStep");
 
   return (
     <Paper
       className="CSVImporter_FileSelector"
       data-active={!!isDragActive}
+      sx={{ backgroundColor: theme.palette.action.selected }}
       {...getRootProps()}
     >
       <input {...getInputProps()} />
