@@ -73,7 +73,11 @@ export const ColumnDragCard: React.FC<{
     >
       <div
         className="CSVImporter_ColumnDragCard__cardHeader"
-        style={{ backgroundColor: theme.palette.primary.main }}
+        style={{
+          backgroundColor: isShadow
+            ? theme.palette.primary.dark
+            : theme.palette.primary.light,
+        }}
       >
         {/* <Typography> */}
         {isDummy ? (
